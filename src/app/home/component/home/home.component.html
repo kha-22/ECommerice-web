@@ -1,0 +1,88 @@
+<carousel>
+    <slide>
+        <img src="../../../../assets/images/hero1.jpeg" alt="" style="display: block;width: 100%; height: 750px;">
+    </slide>
+    <slide>
+        <img src="../../../../assets/images/hero2.jpeg" alt="" style="display: block;width: 100%; height: 750px;">
+    </slide>
+    <slide>
+        <img src="../../../../assets/images/hero3.jpeg" alt="" style="display: block;width: 100%;height: 750px;">
+    </slide>
+</carousel>
+
+<!-- <section class="feature">
+    <h2>feature</h2>
+</section> -->
+
+
+<!-- <br>
+<br>
+
+<div class="txt" #demo style="height: 300px;width: 400px;">
+    <input type="text" id="input" (focus)="onFocus(demo)"
+    (blur)="onBlur(demo)">
+  </div> -->
+<!-- <h3 class="note">Notes</h3>
+                    <ul class="p_note">
+                        <li>You can exchange and return the product within 7 days</li>
+                        <li> Delivery within 3 days</li>
+                        <li>Delivery from 9 am : 10 pm</li>
+                    </ul>-->
+  
+  
+  <section style="margin-top:15px;">
+    <div class="container">
+
+        <div class="row">
+            <h4>Latest 3 products</h4>
+            <div class="col-4 mb-4" *ngFor="let product of productList">
+                <app-product-item [product]="product"></app-product-item>
+              </div>
+              <div class="col-12 mb-4" *ngIf="productList?.length == 0">
+                <div class="card-body text-center" style="color:darkgrey">
+                    <p>No products found</p>
+                </div>
+              </div>
+
+              <!-- <div class="col-12 mb-4" *ngIf="productList?.length == 0">
+                <div class="card-body text-center">
+                    <img src="../../../../assets/images/product-not-found.jpg" class="img-fluid bg-info" 
+                    style="height: 220px;width: 250px;">
+                </div>               
+              </div> -->
+        </div>
+       
+        <!-- <div class="row">
+            
+            <div class="col-lg-4 col-sm-12 col-md-4 col-12"> 
+                <div class="note_section">
+                <i class="fal fa-hands-helping"></i>
+                <p class="note_p">Online customer service
+                   </p>
+                    
+                        <span class="fa-li"></span><span class="ms-2">
+                          00971561906565 <br>00971585821097 
+        
+                        </span>
+                    </div>
+            </div>
+
+            <div class="col-lg-4 col-sm-12 col-md-4 col-12 ">
+                <div class="note_section">
+                <i class="fal fa-shopping-cart"></i>
+                  <p class="note_p">You can exchange and return the product within 7 days</p>
+                  <p class="note_p">Delivery from 9 am : 10 pm</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-sm-12 col-md-4 col-12">
+                <div class="note_section">
+                <i class="fal fa-truck "></i>
+                <p class="note_p">Delivery within 3 days</p>
+                </div>
+            </div>
+           
+        </div> -->
+
+    </div>
+  </section>
