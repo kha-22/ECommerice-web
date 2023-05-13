@@ -1,92 +1,125 @@
-
 <div class="container mt-3">
-<div class="row">
-
+  <div class="row">
     <section class="col-3">
-    <ng-container *ngIf="categories">
-        <h5 class="text-warning ml-3 mt-4">Sort</h5>
-        <select class="custom-select mb-3" (change)="onSortSelected($event.target.value)">
-            <option *ngFor="let sort of sortOptions" [value]="sort.value" 
-                    [selected]="shopParams.sort === sort.value">
-                {{sort.name}}
-            </option>  
+      <!-- <input type="checkbox" (change)="checkValue($event)" /> -->
+      <div class="form-check" style="margin-top: 50px; font-size: 17px">
+        <input
+          mdbCheckbox
+          class="form-check-input"
+          type="checkbox"
+          id="topSales"
+          (change)="checkValue($event)"
+        />
+        <label class="form-check-label text-warning" for="topSales">
+          Show top product sales
+        </label>
+      </div>
+      <ng-container *ngIf="categories">
+        <h5 class="text-warning ml-3 mt-4">Sort by</h5>
+        <select
+          class="custom-select mb-3"
+          (change)="onSortSelected($event.target.value)"
+        >
+          <option
+            *ngFor="let sort of sortOptions"
+            [value]="sort.value"
+            [selected]="shopParams.sort === sort.value"
+          >
+            {{ sort.name }}
+          </option>
         </select>
 
         <h5 class="text-warning ml-3">Categories</h5>
         <div *ngIf="categories.length == 1" class="text-center pt-3">
-            <h5 style="color:darkgrey;font-size: 12px;">No Categories Found</h5>
+          <h5 style="color: darkgrey; font-size: 12px">No Categories Found</h5>
         </div>
         <ul class="list-group my-3" *ngIf="categories.length > 1">
-            <li class="list-group-item" 
-                *ngFor="let cat of categories"
-                [class.active]="cat.id === this.shopParams.categoryId"
-                [value]="cat.id"
-                (click)="onCategorySelected(cat.id)">
-                {{cat.name}}
-            </li>
-          </ul>
-        </ng-container>
+          <li
+            class="list-group-item"
+            *ngFor="let cat of categories"
+            [class.active]="cat.id === this.shopParams.categoryId"
+            [value]="cat.id"
+            (click)="onCategorySelected(cat.id)"
+          >
+            {{ cat.name }}
+          </li>
+        </ul>
+      </ng-container>
     </section>
 
     <section class="col-9">
-        <div class="d-flex justify-content-between align-items-center pd-2">
-            <header>
-                <span *ngIf="totalCount && totalCount > 0">
-                Showing 
-                <strong>
-                    {{(this.shopParams.pageNumber -1) * this.shopParams.pageSize + 1}} - 
-                    {{this.shopParams.pageNumber * this.shopParams.pageSize > this.totalCount 
-                        ? this.totalCount 
-                        : this.shopParams.pageNumber * this.shopParams.pageSize
-                    }}
-                </strong> 
-                 of <strong>{{this.totalCount}}</strong> Result
-                </span>
-                <span *ngIf="totalCount === 0">
-                    There are <strong>0</strong> result for this filter
-                </span>
-            </header>
-            <div class="form-inline mt-2" *ngIf="products">
-                <input type="text" class="form-control mr-2" step="width300px"
-                 placeholder="search"
-                 #search
-                 (keyup.enter)="onSearch()"> 
-                <button class="btn btn-outline-primary my-2" (click)="onSearch()">Search</button>
-                <button class="btn btn-outline-success my-2 ml-2" (click)="onReset()">Reset</button>
-            </div>
+      <div class="d-flex justify-content-between align-items-center pd-2">
+        <header>
+          <span *ngIf="totalCount && totalCount > 0">
+            Showing
+            <strong>
+              {{
+                (this.shopParams.pageNumber - 1) * this.shopParams.pageSize + 1
+              }}
+              -
+              {{
+                this.shopParams.pageNumber * this.shopParams.pageSize >
+                this.totalCount
+                  ? this.totalCount
+                  : this.shopParams.pageNumber * this.shopParams.pageSize
+              }}
+            </strong>
+            of <strong>{{ this.totalCount }}</strong> Result
+          </span>
+          <span *ngIf="totalCount === 0">
+            There are <strong>0</strong> result for this filter
+          </span>
+        </header>
+        <div class="form-inline mt-2" *ngIf="products">
+          <input
+            type="text"
+            class="form-control mr-2"
+            step="width300px"
+            placeholder="search"
+            #search
+            (keyup.enter)="onSearch()"
+          />
+          <button class="btn btn-outline-primary my-2" (click)="onSearch()">
+            Search
+          </button>
+          <button class="btn btn-outline-success my-2 ml-2" (click)="onReset()">
+            Reset
+          </button>
         </div>
-      
-        <div class="row" style="margin-top:60px" *ngIf="products?.length == 0">
-            <div class="col-xl-12">
-                <div class="card-body text-center" style="color:darkgrey;font-size: 14px;">
-                    <p>No products found</p>
-                    <!-- <div class="col-12 mb-4">
+      </div>
+
+      <div class="row" style="margin-top: 60px" *ngIf="products?.length == 0">
+        <div class="col-xl-12">
+          <div
+            class="card-body text-center"
+            style="color: darkgrey; font-size: 14px"
+          >
+            <p>No products found</p>
+            <!-- <div class="col-12 mb-4">
                         <div class="card-body text-center">
                             <img src="../../../../assets/images/product-not-found.jpg" class="img-fluid bg-info" 
                             style="height: 220px;width: 250px;">
                         </div>
                        
                       </div> -->
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
 
-
-        <div class="row">
-            <div class="col-4 mb-4" *ngFor="let item of products">
-              <app-product-item [product]="item"></app-product-item>
-            </div>
-       </div>
-       <div class="d-flex justify-content-center" *ngIf="totalCount > 0">
-            <app-pager
-                [pageSize]="shopParams.pageSize"
-                [pageNumber]="shopParams.pageNumber"
-                [totalCount]="totalCount"
-                (pageChanged)="onPageChange($event)">
-            </app-pager>
-       </div>
-
+      <div class="row">
+        <div class="col-4 mb-4" *ngFor="let item of products">
+          <app-product-item [product]="item"></app-product-item>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center" *ngIf="totalCount > 0">
+        <app-pager
+          [pageSize]="shopParams.pageSize"
+          [pageNumber]="shopParams.pageNumber"
+          [totalCount]="totalCount"
+          (pageChanged)="onPageChange($event)"
+        >
+        </app-pager>
+      </div>
     </section>
-</div>
-
+  </div>
 </div>

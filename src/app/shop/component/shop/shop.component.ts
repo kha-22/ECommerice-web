@@ -32,6 +32,19 @@ export class ShopComponent implements OnInit {
     this.getCategories();
   }
 
+  checkValue(event: any) {
+    if (event.target.checked) {
+      // this.shopService.getTopProductSales().subscribe(
+      //   (response: any) => {
+      //     this.products = response.data;
+      //     this.totalCount = response.count;
+      //     console.log(this.products);
+      //   },
+      //   (err: any) => {}
+      // );
+    }
+  }
+
   getProducts(userCache = false) {
     this.shopService.getProducts(userCache).subscribe(
       (response) => {
