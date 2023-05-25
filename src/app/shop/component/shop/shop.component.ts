@@ -32,16 +32,16 @@ export class ShopComponent implements OnInit {
     this.getCategories();
   }
 
-  checkValue(event: any) {
+  getTopProductSales(event: any) {
     if (event.target.checked) {
-      // this.shopService.getTopProductSales().subscribe(
-      //   (response: any) => {
-      //     this.products = response.data;
-      //     this.totalCount = response.count;
-      //     console.log(this.products);
-      //   },
-      //   (err: any) => {}
-      // );
+      this.shopService.getTopProductSales().subscribe(
+        (response: any) => {
+          this.products = response;
+          this.totalCount = response.count;
+          console.log(this.products);
+        },
+        (err: any) => {}
+      );
     }
   }
 

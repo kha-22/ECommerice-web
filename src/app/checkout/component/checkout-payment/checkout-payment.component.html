@@ -1,10 +1,87 @@
-<p>Payment upon delivery!</p>
+<!-- <div class="px-4 mt-2" >
+  <p>Payment Details</p>
+  <div class="row gx-3">
+    <div class="col-12">
+      <div class="d-flex flex-column">
+        <p class="text mb-1">Person Name</p>
+        <input
+          class="form-control mb-3"
+          type="text"
+          placeholder="Name"
+          value="Barry Allen"
+        />
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="d-flex flex-column">
+        <p class="text mb-1">Card Number</p>
+        <input
+          class="form-control mb-3"
+          type="text"
+          placeholder="1234 5678 435678"
+        />
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="d-flex flex-column">
+        <p class="text mb-1">Expiry</p>
+        <input class="form-control mb-3" type="text" placeholder="MM/YYYY" />
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="d-flex flex-column">
+        <p class="text mb-1">CVV/CVC</p>
+        <input
+          class="form-control mb-3 pt-2"
+          type="password"
+          placeholder="***"
+        />
+      </div>
+    </div>
+  </div>
+</div> -->
 
-<div class="float-none d-flex justify-content-between flex-column flex-lg-row mb-5">
-    <button class="btn btn-outline-primary" cdkStepperPrevious>
-       <i class="fa fa-angle-left"></i> &nbsp; Back to review
-    </button>
-    <button class="btn btn-primary" (click)="submitOrder()">
-        Submit order &nbsp;<i class="fa fa-angle-right"></i>
-    </button>
- </div>
+<div class="mt-4" [formGroup]="checkoutForm">
+  <div class="d-flex justify-content-between align-items-center">
+    <h4 style="font-size: 17px">Payment Details</h4>
+  </div>
+  <div class="row" formGroupName="paymentForm">
+    <div class="form-group col-6">
+      <app-text-input
+        [label]="'Full name'"
+        formControlName="fullName"
+      ></app-text-input>
+    </div>
+    <div class="form-group col-6">
+      <app-text-input
+        [label]="'Card Number'"
+        formControlName="cardNumber"
+      ></app-text-input>
+    </div>
+    <div class="form-group col-6">
+      <app-text-input
+        [label]="'Expiry(MM/YYYY)'"
+        [type]="'date'"
+        formControlName="expiryDate"
+      ></app-text-input>
+    </div>
+    <div class="form-group col-6">
+      <app-text-input
+        [label]="'***'"
+        [type]="'password'"
+        formControlName="password"
+      ></app-text-input>
+    </div>
+  </div>
+</div>
+
+<div
+  class="float-none d-flex justify-content-between flex-column flex-lg-row mb-5"
+>
+  <button class="btn btn-outline-primary" cdkStepperPrevious>
+    <i class="fa fa-angle-left"></i> &nbsp; Back to review
+  </button>
+  <button class="btn btn-primary" (click)="submitOrder()">
+    Submit order &nbsp;<i class="fa fa-angle-right"></i>
+  </button>
+</div>
