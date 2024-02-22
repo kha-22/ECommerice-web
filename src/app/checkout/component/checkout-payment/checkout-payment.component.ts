@@ -27,7 +27,7 @@ export class CheckoutPaymentComponent implements OnInit {
   submitOrder() {
     debugger;
     if (this.checkoutForm.invalid) {
-      this.toaster.error('Please check invalid data');
+      this.toaster.error('Please check required data');
       this.checkoutForm.get('paymentForm').setValidators([Validators.required]);
       this.checkoutForm.get('paymentForm').updateValueAndValidity();
       return;
