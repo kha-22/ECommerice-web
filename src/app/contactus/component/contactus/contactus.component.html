@@ -1,0 +1,67 @@
+<div class="container mt-5 mb-5" style="width: 60%">
+  <form
+    [formGroup]="contactusForm"
+    id="contactusForm"
+    (ngSubmit)="onSubmit(contactusForm.value)"
+  >
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Subject</label>
+      <input
+        type="email"
+        class="form-control"
+        id="exampleFormControlInput1"
+        placeholder="Subject"
+        formControlName="subject"
+      />
+
+      <div
+        style="margin-top: 2px; margin-bottom: -5px; color: red"
+        *ngIf="
+          !contactusForm.get('subject').valid &&
+          contactusForm.get('subject').touched
+        "
+      >
+        <div
+          *ngIf="contactusForm.get('subject').errors?.required"
+          style="font-size: 13px"
+        >
+          Subject is required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Message</label>
+      <textarea
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+        placeholder="Write you message here"
+        formControlName="message"
+      ></textarea>
+
+      <div
+        style="margin-top: 2px; margin-bottom: -5px; color: red"
+        *ngIf="
+          !contactusForm.get('message').valid &&
+          contactusForm.get('message').touched
+        "
+      >
+        <div
+          *ngIf="contactusForm.get('message').errors?.required"
+          style="font-size: 13px"
+        >
+          Message is required
+        </div>
+      </div>
+    </div>
+
+    <button
+      [disabled]="contactusForm.invalid"
+      type="submit"
+      class="btn btn-primary mb-2"
+    >
+      Send
+    </button>
+  </form>
+</div>

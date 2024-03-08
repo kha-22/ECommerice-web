@@ -12,9 +12,18 @@ import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 import { OrderModule } from './order/order.module';
 import { FooterComponent } from './core/component/footer/footer.component';
+import { ContactusComponent } from './contactus/component/contactus/contactus.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MyInboxComponent } from './inbox/my-inbox/my-inbox.component';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
 
 @NgModule({
-  declarations: [AppComponent, FooterComponent],
+  declarations: [
+    AppComponent,
+    FooterComponent,
+    ContactusComponent,
+    MyInboxComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -24,6 +33,8 @@ import { FooterComponent } from './core/component/footer/footer.component';
     HomeModule,
     OrderModule,
     NgxSpinnerModule,
+    ReactiveFormsModule,
+    AccordionModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

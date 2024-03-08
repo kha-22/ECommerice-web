@@ -32,6 +32,7 @@ export class CheckoutPaymentComponent implements OnInit {
       return;
     }
 
+    debugger;
     const basket = this.basketService.getCurrentBasketValue();
     const orderToCreate = this.getOrderToCreate(basket);
 
@@ -54,7 +55,8 @@ export class CheckoutPaymentComponent implements OnInit {
   getOrderToCreate(basket: IBasket) {
     let orderItems = this.basketService.getCurrentBasketValue().items;
     orderItems.forEach((element: any) => {
-      element.total = element.price * element.quantity;
+      debugger;
+      element.total = element.price * element.quantity - element.discount;
     });
 
     return {

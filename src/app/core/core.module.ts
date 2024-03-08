@@ -9,7 +9,6 @@ import { ToastrModule } from 'ngx-toastr';
 import { SectionHeaderComponent } from './component/section-header/section-header.component';
 import { BreadcrumbModule } from 'xng-breadcrumb';
 import { SharedModule } from '../shared/shared.module';
-import { ContactusComponent } from './component/contactus/contactus.component';
 
 @NgModule({
   declarations: [
@@ -18,22 +17,17 @@ import { ContactusComponent } from './component/contactus/contactus.component';
     NotFoundComponent,
     ServerErrorComponent,
     SectionHeaderComponent,
-    ContactusComponent,
-    
   ],
   imports: [
     CommonModule,
     RouterModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
-      preventDuplicates: true
+      preventDuplicates: true,
     }),
     BreadcrumbModule,
-    SharedModule
+    SharedModule,
   ],
-  exports:[
-    NavBarComponent,
-    SectionHeaderComponent
-  ]
+  exports: [NavBarComponent, SectionHeaderComponent],
 })
-export class CoreModule { }
+export class CoreModule {}

@@ -1,0 +1,59 @@
+<div class="container mt-5 mb-5" style="width: 70%">
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="card" *ngFor="let question of questionList">
+        <div class="card-body">
+          <div>
+            <div class="float-left">
+              <label style="font-weight: bold">Subject: </label>
+              {{ question?.subject }}
+            </div>
+            <div class="float-right">
+              <label style="font-weight: bold">Sending Date:</label>
+              {{ question?.sendDate | date : "medium" }}
+            </div>
+          </div>
+          <div style="margin-top: 50px">
+            <div>
+              <label style="font-weight: bold">Question:</label>
+            </div>
+            <div>
+              {{ question?.message }}
+            </div>
+          </div>
+
+          <div style="margin-top: 60px">
+            <div>
+              <label style="font-weight: bold">Answered Date:</label>
+              {{ question?.repayDate | date : "medium" }}
+            </div>
+
+            <div>
+              <div
+                class="alert alert-info"
+                role="alert"
+                *ngIf="question.replay"
+              >
+                {{ question?.replay }}
+              </div>
+
+              <div
+                class="alert alert-secondary"
+                role="alert"
+                *ngIf="question.replay == null"
+              >
+                No answer yet
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-container *ngIf="questionList.length == 0">
+    <div class="card">
+      <div class="card-body">No data found</div>
+    </div>
+  </ng-container>
+</div>
