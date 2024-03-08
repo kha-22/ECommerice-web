@@ -5,6 +5,7 @@
         <th scope="col" [class.bg-light]="isBasket || isOrdered">Product</th>
         <th scope="col" [class.bg-light]="isBasket || isOrdered">Price</th>
         <th scope="col" [class.bg-light]="isBasket || isOrdered">Quantity</th>
+        <th scope="col" [class.bg-light]="isBasket || isOrdered">Discount</th>
         <th scope="col" [class.bg-light]="isBasket || isOrdered">Total</th>
         <th scope="col" *ngIf="isBasket" scope="col" class="bg-light">
           Remove
@@ -53,7 +54,20 @@
           </td>
 
           <td class="align-middle">
-            <strong>{{ item.price * item.quantity | currency }}</strong>
+            <div
+              class="d-flex align-item-center"
+              [class.justify-content-center]="!isBasket"
+            >
+              <span class="font-weight-bold">
+                {{ item.discount | currency }}
+              </span>
+            </div>
+          </td>
+
+          <td class="align-middle">
+            <strong>
+              {{ item.price * item.quantity - item.discount | currency }}
+            </strong>
           </td>
 
           <td class="align-middle text-center" *ngIf="isBasket">

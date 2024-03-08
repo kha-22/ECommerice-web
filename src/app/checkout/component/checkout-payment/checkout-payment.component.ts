@@ -25,7 +25,6 @@ export class CheckoutPaymentComponent implements OnInit {
   ngOnInit(): void {}
 
   submitOrder() {
-    debugger;
     if (this.checkoutForm.invalid) {
       this.toaster.error('Please check required data');
       this.checkoutForm.get('paymentForm').setValidators([Validators.required]);
