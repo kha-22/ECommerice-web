@@ -1,10 +1,9 @@
-
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {PaginationModule} from 'ngx-bootstrap/pagination';
-import { PagerComponent } from './component/pager/pager.component'
-import {CarouselModule} from 'ngx-bootstrap/carousel';
-import { OrderTotalsComponent } from './component/order-totals/order-totals.component'
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { PagerComponent } from './component/pager/pager.component';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { OrderTotalsComponent } from './component/order-totals/order-totals.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TextInputComponent } from './component/text-input/text-input.component';
@@ -12,8 +11,7 @@ import { CdkStepperModule } from '@angular/cdk/stepper';
 import { StepperComponent } from './component/stepper/stepper.component';
 import { RouterModule } from '@angular/router';
 import { BasketSummaryComponent } from './component/basket-summary/basket-summary.component';
-
-
+import { AppratingComponent } from './component/apprating/apprating.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +19,8 @@ import { BasketSummaryComponent } from './component/basket-summary/basket-summar
     OrderTotalsComponent,
     TextInputComponent,
     StepperComponent,
-    BasketSummaryComponent
+    BasketSummaryComponent,
+    AppratingComponent,
   ],
   imports: [
     CommonModule,
@@ -31,7 +30,7 @@ import { BasketSummaryComponent } from './component/basket-summary/basket-summar
     CdkStepperModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
   ],
   exports: [
     PaginationModule,
@@ -44,7 +43,8 @@ import { BasketSummaryComponent } from './component/basket-summary/basket-summar
     StepperComponent,
     FormsModule,
     ReactiveFormsModule,
-    BasketSummaryComponent
-  ]
+    BasketSummaryComponent,
+    AppratingComponent,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}

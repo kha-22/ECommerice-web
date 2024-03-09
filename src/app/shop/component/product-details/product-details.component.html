@@ -5,6 +5,8 @@
         src="{{ imageUrl + product.url }}"
         alt="{{ product.name }}"
         class="img fluid w-100"
+        width="40"
+        height="300"
       />
     </div>
 
@@ -36,14 +38,15 @@
           Add to cart
         </button>
       </div>
-      <div class="d-flex justify-content-start align-items-center">
-        Rating
-        <!-- <ngb-rating [(rate)]="currentRate"></ngb-rating>
-        <ngb-rating
-          [max]="5"
-          [(rate)]="currentRate"
-          [readonly]="true"
-        ></ngb-rating> -->
+      <div class="d-flex justify-content-start align-items-center mt-3">
+        Rating &nbsp;
+        <!-- <rating
+          [maxRating]="5"
+          [currentRating]="userRating"
+          (ratingUpdated)="onRatingUpdated($event)"
+        >
+        </rating> -->
+        <rating (rated)="onRated($event)" [currentRating]="userRating"></rating>
       </div>
     </div>
 

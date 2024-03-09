@@ -17,7 +17,7 @@ export class ProductDetailsComponent implements OnInit {
   product: IProduct;
   quantity = 1;
   imageUrl = environment.imagesUrl + 'Images/Products/';
-  currentRate = 3;
+  userRating: number = 2;
 
   constructor(
     private shopService: ShopService,
@@ -31,6 +31,10 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadProduct();
+  }
+
+  onRated(event: any) {
+    debugger;
   }
 
   loadProduct() {
