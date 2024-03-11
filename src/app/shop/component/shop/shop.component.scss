@@ -1,19 +1,29 @@
-.list-group-item{
-    cursor: pointer;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1.1em;
+.list-group-item {
+  cursor: pointer;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.1em;
 
-    &:focus{
-         outline: none;
-    }
-    &.active{
-         border-radius: 10px;
-    }
-    &:not(.active):hover{
-         color: #fff;
-         background-color: rgb(233, 86, 32, 0.705);
-         border-radius: 10px;
-    }
-    
+  &:focus {
+    outline: none;
+  }
+  &.active {
+    border-radius: 10px;
+  }
+  &:not(.active):hover {
+    color: #fff;
+    background-color: rgb(233, 86, 32, 0.705);
+    border-radius: 10px;
+  }
+}
+
+.foooter {
+  display: flex;
+  justify-content: space-between; /* Aligns items to the start and end of the container */
+  padding: 10px;
+}
+
+.left,
+.right {
+  padding: 5px;
 }

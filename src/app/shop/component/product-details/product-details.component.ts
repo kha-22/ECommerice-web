@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BasketService } from 'src/app/basket/services/basket.service';
+import { AppratingComponent } from 'src/app/shared/component/apprating/apprating.component';
 import { IBasketItem } from 'src/app/shared/models/basket';
-import { IProduct } from 'src/app/shared/models/product';
+import { IProduct, ProductRate } from 'src/app/shared/models/product';
 import { environment } from 'src/environments/environment';
 import { BreadcrumbService } from 'xng-breadcrumb';
 import { ShopService } from '../../services/shop.service';
@@ -17,7 +18,9 @@ export class ProductDetailsComponent implements OnInit {
   product: IProduct;
   quantity = 1;
   imageUrl = environment.imagesUrl + 'Images/Products/';
-  userRating: number = 2;
+  selectedRating: number = 0;
+  appratingComponent = new AppratingComponent();
+  productId: any;
 
   constructor(
     private shopService: ShopService,
@@ -31,10 +34,23 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadProduct();
+    this.appratingComponent.rate(2);
+
+    this.activateRoute.params.subscribe((params) => {
+      this.productId = +params['id'];
+    });
   }
 
-  onRated(event: any) {
+  onRated(rating: number): void {
     debugger;
+    if (this.productId) {
+      var productRate = new ProductRate();
+      productRate.productId = this.productId;
+      productRate.rate = rating;
+
+      this.selectedRating = rating;
+      this.addProductRate(productRate);
+    }
   }
 
   loadProduct() {
@@ -52,6 +68,20 @@ export class ProductDetailsComponent implements OnInit {
           //final
         }
       );
+  }
+
+  addProductRate(productRate: ProductRate) {
+    this.shopService.addProductRate(productRate).subscribe(
+      (response: any) => {
+        this.toaster.success('Add ratting to this product');
+      },
+      (err) => {
+        this.toaster.error('Error when add rating');
+      },
+      () => {
+        //final
+      }
+    );
   }
 
   addItemToBasket() {

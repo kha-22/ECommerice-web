@@ -5,9 +5,9 @@ import { IPagination, Pagination } from 'src/app/shared/models/pagination';
 import { IType } from 'src/app/shared/models/productType';
 import { map } from 'rxjs/operators';
 import { ShopParams } from 'src/app/shared/models/shopParams';
-import { IProduct } from 'src/app/shared/models/product';
 import { environment } from 'src/environments/environment';
 import { of, pipe } from 'rxjs';
+import { IProduct, ProductRate } from 'src/app/shared/models/product';
 
 @Injectable({
   providedIn: 'root',
@@ -116,7 +116,7 @@ export class ShopService {
   }
 
   getTopProductSales(): any {
-    return this.http.get(this.baseUrl + 'Product/getTopProductSales');
+    return this.http.get(this.baseUrl + 'Product/topSellingProducts');
   }
 
   checkProductQtyAva(product: IProduct, qtyReq: number): any {
@@ -127,5 +127,9 @@ export class ShopService {
         '&qtyReq=' +
         qtyReq
     );
+  }
+
+  addProductRate(productRate: ProductRate): any {
+    return this.http.post(this.baseUrl + 'product/addProductRate', productRate);
   }
 }

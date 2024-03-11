@@ -1,19 +1,9 @@
-<!-- <div class="rating">
+<div class="rating">
   <span
     class="star"
     *ngFor="let star of stars; let i = index"
     (click)="rate(i + 1)"
-  >
-    {{ star }}
-  </span>
-</div> -->
-
-<div class="rating" (click)="rate($event)">
-  <!-- <span *ngFor="let star of stars" class="star" [class.filled]="star <= currentRating">&#9733;</span> -->
-  <span
-    class="star"
-    *ngFor="let star of stars; let i = index"
-    (click)="rate(i + 1)"
+    [ngClass]="{ filled: i < currentRating }"
   >
     &#9733;
   </span>

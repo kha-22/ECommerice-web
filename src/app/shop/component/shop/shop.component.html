@@ -11,9 +11,23 @@
           (change)="getTopProductSales($event)"
         />
         <label class="form-check-label text-warning" for="topSales">
-          Show top product sales
+          Show best-selling products
         </label>
       </div>
+
+      <div class="form-check" style="margin-top: 10px; font-size: 17px">
+        <input
+          mdbCheckbox
+          class="form-check-input"
+          type="checkbox"
+          id="topSales"
+          (change)="getTopProductSales($event)"
+        />
+        <label class="form-check-label text-warning" for="topSales">
+          Show the most rated products
+        </label>
+      </div>
+
       <ng-container *ngIf="categories">
         <h5 class="text-warning ml-3 mt-4">Sort by</h5>
         <select

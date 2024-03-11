@@ -1,14 +1,16 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'rating',
   templateUrl: './apprating.component.html',
   styleUrls: ['./apprating.component.scss'],
 })
-export class AppratingComponent implements OnInit {
+export class AppratingComponent {
   @Input() maxRating: number = 5;
-  @Input() currentRating: number;
   @Output() rated = new EventEmitter<number>();
+
+  currentRating: number = 0;
   stars: number[] = [];
 
   constructor() {
@@ -17,9 +19,9 @@ export class AppratingComponent implements OnInit {
       .map((_, index) => index + 1);
   }
 
-  ngOnInit(): void {}
-
-  rate(rating: number): void {
+  public rate(rating: number): void {
+    debugger;
+    this.currentRating = rating;
     this.rated.emit(rating);
   }
 }

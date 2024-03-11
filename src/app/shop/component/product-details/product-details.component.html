@@ -40,13 +40,9 @@
       </div>
       <div class="d-flex justify-content-start align-items-center mt-3">
         Rating &nbsp;
-        <!-- <rating
-          [maxRating]="5"
-          [currentRating]="userRating"
-          (ratingUpdated)="onRatingUpdated($event)"
-        >
-        </rating> -->
-        <rating (rated)="onRated($event)" [currentRating]="userRating"></rating>
+
+        <rating (rated)="onRated($event)"></rating>
+        <div>({{ selectedRating }})</div>
       </div>
     </div>
 
